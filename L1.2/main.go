@@ -18,10 +18,7 @@ func main() {
 		}(n)
 
 	}
-	go func() {
-		wg.Wait()
-		close(ch)
-	}()
+	wg.Wait()
 
 	for res := range ch {
 		fmt.Println(res)

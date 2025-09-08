@@ -13,35 +13,35 @@ var stopFlag int32
 func main() {
 
 	//1.Метод с сигналом
-	fmt.Println("Начало показа метода остановки с помощью флага сигнала")
-	go stopByFlag()
-	time.Sleep(5 * time.Second)
-	atomic.StoreInt32(&stopFlag, 1)
-	time.Sleep(2 * time.Second)
-	fmt.Println("Завершение показа метода с флагом!!!")
+	//fmt.Println("Начало показа метода остановки с помощью флага сигнала")
+	//go stopByFlag()
+	//time.Sleep(5 * time.Second)
+	//atomic.StoreInt32(&stopFlag, 1)
+	//time.Sleep(2 * time.Second)
+	//fmt.Println("Завершение показа метода с флагом!!!")
 
 	//2.Остановка горутины с помощью отправки сигнала в канал
-	fmt.Println("Начало показа метода работы горутины с отправкой сигнала в канал")
-	ch := make(chan bool)
-	go stopByChannel(ch)
-	time.Sleep(5 * time.Second)
-	ch <- true
-	time.Sleep(2 * time.Second)
-	fmt.Println("остановка показа метода с отправкой в канал!!!")
+	//fmt.Println("Начало показа метода работы горутины с отправкой сигнала в канал")
+	//ch := make(chan bool)
+	//go stopByChannel(ch)
+	//time.Sleep(5 * time.Second)
+	//ch <- true
+	//time.Sleep(2 * time.Second)
+	//fmt.Println("остановка показа метода с отправкой в канал!!!")
 
 	//3. Метод остановка с помощью контекста
-	ctx, cancel := context.WithCancel(context.Background())
-	fmt.Println("Начало показа метода остановки с помощью context!!!")
-	go stopByContext(ctx)
-	time.Sleep(5 * time.Second)
-	cancel()
-	time.Sleep(2 * time.Second)
-	fmt.Println("Оставнока показа метода с конекстом!!!")
+	//ctx, cancel := context.WithCancel(context.Background())
+	//fmt.Println("Начало показа метода остановки с помощью context!!!")
+	//go stopByContext(ctx)
+	//time.Sleep(5 * time.Second)
+	//cancel()
+	//time.Sleep(2 * time.Second)
+	//fmt.Println("Оставнока показа метода с конекстом!!!")
 
 	//4.runtime метод
-	fmt.Println("начало метода с рантайм")
-	go stopByGoExit()
-	time.Sleep(5 * time.Second)
+	//fmt.Println("начало метода с рантайм")
+	//go stopByGoExit()
+	//time.Sleep(5 * time.Second)
 
 	//5. метод стоп с помощью таймера
 	fmt.Println("начало метода остановки таймер")
@@ -96,7 +96,6 @@ func stopByContext(ctx context.Context) {
 }
 func stopByGoExit() {
 	var dollar int = 60
-
 	dollar++
 	fmt.Printf("Цена доллара: %d\n", dollar)
 	time.Sleep(650 * time.Millisecond)
@@ -116,8 +115,6 @@ func stopByTimer(timeout time.Duration) {
 			bitcoin = bitcoin + 100
 			fmt.Printf("биткоин: %d\n", bitcoin)
 			time.Sleep(545 * time.Millisecond)
-
 		}
-
 	}
 }
